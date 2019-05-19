@@ -5,12 +5,14 @@ import magic_pakacge
 mqtt_port = int(os.environ['MQTT_PORT'])
 wake_mac = os.environ['WAKE_MAC']
 
+
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, rc):
     print("Connected with result code "+ str(rc))
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
     client.subscribe("devices/wake_on_lan")
+
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
@@ -19,7 +21,8 @@ def on_message(client, userdata, msg):
         magic_pakacge.send_package(wake_mac)
         print(message)
 
-client = mqtt.Client()
+
+client = mqtt.Client(client_id="20e6421e-7c5b-49d6-8319-a9c19dbffad6", clean_session=True)
 client.on_connect = on_connect
 client.on_message = on_message
 
