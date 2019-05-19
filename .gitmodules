@@ -1,0 +1,3 @@
+[submodule "pi_command_executor/src/Socket-simple-usage"]
+	path = pi_command_executor/src/Socket-simple-usage
+	url = https://github.com/MrLaki5/Socket-simple-usage.git
