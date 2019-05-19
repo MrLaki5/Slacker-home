@@ -14,7 +14,8 @@ services:
     build: ./pi_command_executor
     environment:
       - MQTT_PORT=1883
-      - WAKE_MAC=FF:FF:FF:FF:FF:FF
+    env_file:
+      - ./slacker.env
     depends_on:
      - broker
     stdin_open: true

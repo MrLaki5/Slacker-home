@@ -6,3 +6,6 @@
 
 #pyCharm stuff
 .idea/
+
+#env file
+slacker.env
