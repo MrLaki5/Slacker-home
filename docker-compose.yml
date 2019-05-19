@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  broker:
+    container_name: mqtt_broker
+    build: ./mqtt_broker
+    restart: always
+    expose:
+      - 1883:1883
+      - 9001:9001
+    
+  executor:
+    container_name: command_executor
+    build: ./pi_command_executor
+    environment:
+      - MQTT_PORT=1883
+    depends_on:
+     - broker
+    stdin_open: true
+    tty: true
