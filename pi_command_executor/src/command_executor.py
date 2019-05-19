@@ -2,7 +2,8 @@ import paho.mqtt.client as mqtt
 import os
 import magic_pakacge
 
-mqtt_port = os.environ['MQTT_PORT']
+mqtt_port = int(os.environ['MQTT_PORT'])
+wake_mac = os.environ['WAKE_MAC']
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, rc):
@@ -15,7 +16,7 @@ def on_connect(client, userdata, rc):
 def on_message(client, userdata, msg):
     message = msg.payload.decode("UTF-8")
     if msg.topic == "devices/wake_on_lan":
-        magic_pakacge.
+        magic_pakacge.send_package(wake_mac)
         print(message)
 
 client = mqtt.Client()
