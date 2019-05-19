@@ -5,9 +5,11 @@ services:
     container_name: mqtt_broker
     build: ./mqtt_broker
     restart: always
-    expose:
+    ports:
       - 1883:1883
       - 9001:9001
+      - 44444:44444
+      - 9:9
     
   executor:
     container_name: command_executor
@@ -20,3 +22,4 @@ services:
      - broker
     stdin_open: true
     tty: true
+    network_mode: host

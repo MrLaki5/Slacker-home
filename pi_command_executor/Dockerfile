@@ -8,6 +8,6 @@ RUN pip3 install -r ./requirements.txt
 WORKDIR /app/src/
 
 # Add wake on lan module to python path
-export PATH=$PATH:/app/src/Socket-simple-usage/wake_on_lan
+ENV PYTHONPATH "${PYTHONPATH}:/app/src/Socket-simple-usage/wake_on_lan"
 
 CMD ["python3", "./command_executor.py"]
