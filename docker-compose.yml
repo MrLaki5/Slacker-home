@@ -8,8 +8,6 @@ services:
     ports:
       - 1883:1883
       - 9001:9001
-      - 44444:44444
-      - 9:9
     
   executor:
     container_name: command_executor
@@ -20,6 +18,5 @@ services:
       - ./slacker.env
     depends_on:
      - broker
-    stdin_open: true
-    tty: true
+    restart: always
     network_mode: host

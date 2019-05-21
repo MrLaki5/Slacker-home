@@ -14,7 +14,7 @@ def on_connect(client, userdata, flags, rc):
 client = mqtt.Client(client_id="10e6421e-7c5b-49d6-8319-a9c19dbffad6", clean_session=True)
 client.on_connect = on_connect
 
-client.connect("localhost", 1883, 60)
+client.connect("192.168.1.200", 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
