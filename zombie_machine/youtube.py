@@ -1,5 +1,6 @@
 import requests
 import webbrowser
+import platform
 
 
 def get_videos(username):
@@ -17,10 +18,11 @@ def get_latest_video(username):
 
 
 def open_in_browser(url):
-    new = 2  # open in a new tab, if possible
-    webbrowser.get(using='chrome').open(url)
-
-
-vid_url = get_latest_video("EmisijeRTVojvodine")
-print(vid_url)
-open_in_browser(vid_url)
+    if platform.system() == "Windows":
+        chrome_path = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+    else:
+        if platform.system() == "Darwin":
+            chrome_path = "open -a /Applications/Google\ Chrome.app %s"
+        else:
+            chrome_path = "/usr/bin/google-chrome %s"
+    webbrowser.get(chrome_path).open(url)

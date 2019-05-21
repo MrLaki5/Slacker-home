@@ -1,5 +1,4 @@
 import paho.mqtt.client as mqtt
-import os
 
 
 # The callback for when the client receives a CONNACK response from the server.
