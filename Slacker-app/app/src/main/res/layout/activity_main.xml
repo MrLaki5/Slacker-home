@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Connection: not established"
+        android:textAlignment="center"
+        android:id="@+id/connectionStatus"/>
     <Button
         android:layout_width="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
