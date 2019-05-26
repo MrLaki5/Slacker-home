@@ -8,4 +8,4 @@
 .idea/
 
 #env file
-slacker.env
+pi_server/slacker.env
