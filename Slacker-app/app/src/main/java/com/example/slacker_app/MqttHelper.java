@@ -61,6 +61,7 @@ public class MqttHelper {
         mqttConnectOptions.setCleanSession(false);
         mqttConnectOptions.setUserName(username);
         mqttConnectOptions.setPassword(password.toCharArray());
+        mqttConnectOptions.setKeepAliveInterval(1);
         try {
             mqttAndroidClient.connect(mqttConnectOptions, null, mqttActionListener);
         } catch (MqttException ex){
