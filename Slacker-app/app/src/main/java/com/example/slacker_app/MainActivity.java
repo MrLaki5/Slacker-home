@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MainActivity extends AppCompatActivity {
 
     MqttHelper mqttHelper = null;
+    String playerType = "mpv";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         wakeUpButt.setOnClickListener(wakeButtListener);
         Button lastestYTButt = findViewById(R.id.playLatestYT);
         lastestYTButt.setOnClickListener(playLatestYTListener);
+        RadioGroup playerTypeRG = findViewById(R.id.playerType);
+        playerTypeRG.setOnCheckedChangeListener(playerTypeListener);
     }
 
     @Override
@@ -59,10 +63,22 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String channelName = ((EditText)findViewById(R.id.YTChannelName)).getText().toString();
-            String message = "{\"command\": \"youtube_latest\", \"channel\": \"" + channelName + "\"}";
+            String message = "{\"command\": \"youtube_latest\", \"channel\": \"" + channelName + "\",\"player\": \"" + playerType + "\"}";
             boolean result = mqttHelper.publishMessage("devices/50:e5:49:1a:ee:e3/command", message);
             if (result){
                 Toast.makeText(MainActivity.this, "Playing latest video of channel " + channelName, Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    private RadioGroup.OnCheckedChangeListener playerTypeListener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId == R.id.playerTypeMPV){
+                playerType = "mpv";
+            }
+            else{
+                playerType = "chrome";
             }
         }
     };
