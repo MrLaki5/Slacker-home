@@ -10,7 +10,7 @@ def on_connect(client, userdata, flags, rc):
     message = {}
     message["command"] = "youtube_latest"
     message["channel"] = "EmisijeRTVojvodine"
-    message["player"] = "chrome"
+    message["player"] = "mpv"
     client.publish("devices/" + "50:E5:49:1A:EE:E3".lower() + "/command", json.dumps(message))
     client.disconnect()
 

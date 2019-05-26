@@ -3,6 +3,7 @@ import logging
 import json
 import mac_getter
 import youtube
+import mpv_play_video
 
 with open("config.json") as f:
     config_file = json.load(f)
@@ -31,7 +32,11 @@ def on_message(client, userdata, msg):
         if message_json["command"] == "youtube_latest":
             if "channel" in message_json and message_json["channel"] != "":
                 video_url = youtube.get_latest_video(message_json["channel"])
-                youtube.open_in_browser(video_url)
+                if "player" in message_json:
+                    if message_json["player"] == "chrome":
+                        youtube.open_in_browser(video_url)
+                    else:
+                        mpv_play_video.play_in_mpv(video_url, True, False)
 
 
 client = mqtt.Client(client_id=client_id, clean_session=True)
