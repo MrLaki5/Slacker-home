@@ -6,13 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <Button
+        android:layout_width="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:text="Wake up"
+        android:id="@+id/wakeUpButton"/>
+
+    <Button
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/wakeUpButton"
+        android:layout_height="wrap_content"
+        android:text="Play latest YT video from channel"
+        android:id="@+id/playLatestYT"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/playLatestYT"
+        android:hint="Youtube channel name:"
+        android:textAlignment="center"
+        android:text="EmisijeRTVojvodine"
+        android:id="@+id/YTChannelName"/>
 
 </android.support.constraint.ConstraintLayout>
