@@ -51,8 +51,10 @@ public class MqttHelper {
     }
 
     public void setCallbackAndConnect(MqttCallbackExtended callback) {
-        mqttAndroidClient.setCallback(callback);
-        connect();
+        if(!mqttAndroidClient.isConnected()){
+            mqttAndroidClient.setCallback(callback);
+            connect();
+        }
     }
 
     private void connect(){

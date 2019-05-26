@@ -39,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        mqttHelper.stop();
+        if (mqttHelper != null){
+            mqttHelper.stop();
+        }
         super.onStop();
     }
 
